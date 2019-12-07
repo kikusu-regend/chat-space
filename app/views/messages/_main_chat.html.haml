@@ -32,10 +32,9 @@
       天才の出る幕じゃないみたいですね
   .main_chat__form
     %form
-      %input.main_chat__form__left(placeholder="type a message")
+      %input.main_chat__form__left{placeholder: "type a message"}
         .main_chat__form__left__text 
         %label.main_chat__form__left__icon
           = icon('fa','image',class: 'icon')
           %input.hidden{type: 'file'}
       %input.main_chat__form__right_send{type: 'submit', value: 'Send'}
-        
