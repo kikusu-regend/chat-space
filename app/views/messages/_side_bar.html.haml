@@ -2,13 +2,14 @@
   .side_bar__header
     .side_bar__header__bar
       .side_bar__header__bar__name
+        = current_user.name
         山田
       .side_bar__header__bar__icon
         .side_bar__header__bar__icon__fa_edit
         =link_to "#", class: "side_bar__header__bar__icon__fa_edit" do
-          = icon('fa', 'edit', class: 'sample' )
+          = icon('fa', 'pen-square', class: 'sample' )
         .side_bar__header__bar__icon__fa_cog  
-        =link_to "#", class: "side_bar__header__bar__icon__fa_cog" do
+        =link_to edit_user_path(current_user) do
           = icon('fa','cog', class: 'sample')
   .side_bar__contents 
     .side_bar__contents__content
