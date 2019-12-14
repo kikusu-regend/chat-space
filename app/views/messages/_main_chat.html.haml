@@ -2,39 +2,25 @@
   .main_chat__header
     .main_chat__header__left
       .main_chat__header__left__group_name
-        山田と愉快な仲間たち
+        = @group.name
       .main_chat__header__left__group_menber
-        Member: 山田 きくち テング ただの天才
+        Member: 
+        - @group.users.each do |user|
+          = user.name
     .main_chat__header__right_edit
-      =link_to "#", class: "main_chat__header__right_edit__btn" do
+      =link_to edit_group_path(@group.id), class: "main_chat__header__right_edit__btn" do
         Edit 
   .main_chat__contents
-    .main_chat__contents__tweets
-      .main_chat__contents__tweets__name
-        山田
-      .main_chat__contents__tweets__date
-        2019/11/29(Fry) 20:47:21
-    .main_chat__contents__massage
-      こんにちは！
-    .main_chat__contents__tweets
-      .main_chat__contents__tweets__name
-        テング  
-      .main_chat__contents__tweets__date
-        2019/12/04(Wed) 15:54:42
-    .main_chat__contents__massage
-      お腹減りました
-    .main_chat__contents__tweets
-      .main_chat__contents__tweets__name
-        ただの天才
-      .main_chat__contents__tweets__date
-        2019/12/04(Wed) 16:01:07
-    .main_chat__contents__massage
-      天才の出る幕じゃないみたいですね
+    = render @messages 
+      
   .main_chat__form
-    %form
-      %input.main_chat__form__left{placeholder: "type a message"}
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'main_chat__form__left', placeholder: 'type a message'
         .main_chat__form__left__text 
-        %label.main_chat__form__left__icon
-          = icon('fa','image',class: 'icon')
-          %input.hidden{type: 'file'}
-      %input.main_chat__form__right_send{type: 'submit', value: 'Send'}
+          = f.label :image, class: 'main_chat__form__left__icon' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'main_chat__form__right_send'
+
+    
