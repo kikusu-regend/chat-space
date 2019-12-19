@@ -18,7 +18,7 @@ $(function() {
       $('.main_chat__contents').animate({ scrollTop: $('.main_chat__contents')[0].scrollHeight});
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
   if (document.location.href.match(/\/groups\/\d+\/messages/)) {
