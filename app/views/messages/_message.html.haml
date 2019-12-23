@@ -5,9 +5,11 @@
     = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
 .main_chat__contents__massage
   - if message.content.present?
+    .main_chat__contents__massage__bar
     = message.content
-  = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
-
+  = image_tag message.image.url, width:'200', class: 'main_chat__contents__massage__bar__image' if message.image.present?
+   
+  
     
 
 
